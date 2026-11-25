@@ -35,6 +35,32 @@ Currently under development.
 - [ ] Azure infrastructure and deployment
 - [ ] Security and monitoring
 
+## Running Locally
+
+The simulator and backend currently run as separate Python processes.
+
+Install the application dependencies:
+```bash
+python -m pip install -r simulator/requirements.txt
+python -m pip install -r backend/requirements.txt
+```
+
+Start the backend:
+```bash
+python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000
+```
+
+In another terminal, start the simulator:
+```bash
+python -m simulator.machine_simulator
+```
+
+API documentation is available at http://localhost:8000/docs.
+
+The simulator currently supports configurable HTTP timeouts, limited retries and duplicate-safe telemetry submissions.
+
+Telemetry is temporarily stored in backend process memory. Persistent PostgreSQL storage will be implemented next.
+
 ## Documentation
 
 - [Project requirements](docs/requirements.md)
